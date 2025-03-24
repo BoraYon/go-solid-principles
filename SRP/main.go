@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 type User struct {
 	Name  string
@@ -14,4 +17,14 @@ func printUser(user User) {
 func main() {
 	user := User{Name: "Bora", Email: "bora@example.com"}
 	printUser(user)
+
+	manager := NewLogManager("logs.txt")
+	manager.StartWorkers(3)
+
+	for i := 1; i <= 10; i++ {
+		manager.Log(fmt.Sprintf("Event #%d happened", i))
+		time.Sleep(30 * time.Millisecond)
+	}
+
+	manager.Stop()
 }
