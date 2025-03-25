@@ -54,7 +54,64 @@ All loggers shut down gracefully.
 
 ## 🔹 OCP – Open/Closed Principle
 
-> ✍️ Coming soon...
+# 🧱 OCP – Open/Closed Principle
+
+This example demonstrates the **Open/Closed Principle (OCP)** using Go.
+
+> **"Software entities should be open for extension, but closed for modification."**  
+> — Bertrand Meyer
+
+---
+
+## 🧠 Concept
+
+The idea is that we should be able to **add new functionality** to our system **without changing existing code**.  
+This leads to more maintainable and stable codebases, especially in growing systems.
+
+In Go, OCP is typically achieved through:
+- Interfaces
+- Composition
+- Polymorphic behavior via struct-method patterns
+
+---
+
+## 💳 Example – Payment Processing System
+
+We have a payment processor that can handle different payment methods, such as:
+
+- **Credit Card**
+- **Bank Transfer**
+- **Crypto Payment** (e.g., Bitcoin)
+
+Each payment method implements a common `PaymentMethod` interface with a `Pay()` function.
+
+> New payment types can be added without modifying existing logic.  
+> This is **true OCP** in action.
+
+---
+
+### 📦 Components
+
+| File                | Responsibility                              |
+|---------------------|----------------------------------------------|
+| `payment.go`        | Declares the `PaymentMethod` interface       |
+| `credit_card.go`    | Implements payment via credit card           |
+| `bank_transfer.go`  | Implements payment via bank transfer         |
+| `crypto_payment.go` | Implements payment via cryptocurrency        |
+| `main.go`           | Executes payments through a generic function |
+
+---
+
+### 🖥️ Sample Output
+
+### 🔍 OCP in Practice
+
+In this project:
+
+- We **did not modify** any existing files to add `CryptoPayment`.
+- We simply created a new file `crypto_payment.go` that implements the same interface.
+- The `processPayment()` function remained untouched.
+- **This is exactly what the Open/Closed Principle promotes.**
 
 ---
 
