@@ -117,7 +117,95 @@ In this project:
 
 ## 🔹 LSP – Liskov Substitution Principle
 
-> ✍️ Coming soon...
+🧱 LSP – Liskov Substitution Principle
+
+This example demonstrates the Liskov Substitution Principle (LSP) using Go.
+
+"Objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program."— Barbara Liskov
+
+🧠 Concept
+
+LSP ensures that a derived type (or a struct implementing an interface in Go) can replace its base type without altering the correct behavior of the system.
+
+In Go, we apply LSP using:
+
+Interfaces: Ensuring consistent behavior across different types.
+
+Struct Implementations: Each struct adheres to the defined contract.
+
+Avoiding Misuse: Structs should not implement interfaces if they cannot fulfill their responsibilities.
+
+💳 Example – Payment Processing with Fraud Detection
+
+In this example, we have a payment processing system where multiple payment methods can be used:
+
+Credit Card Payment
+
+Crypto Payment
+
+Additionally, we introduce a Fraud Detection Service to detect fraudulent credit card transactions.
+
+The correct use of LSP ensures that:
+
+Payment processors are interchangeable.
+
+Fraud detection is handled by a dedicated service without misusing the interface.
+
+📦 Components
+
+File
+
+Responsibility
+
+payment.go
+
+Defines the PaymentProcessor interface
+
+credit_card.go
+
+Implements payments using credit card
+
+crypto_payment.go
+
+Implements payments using cryptocurrency
+
+fraud_detection.go
+
+Contains the fraud detection logic (LSP compliant)
+
+main.go
+
+Simulates payment processing and fraud detection
+
+🚀 Example Code Execution
+
+When the application runs, it processes payments and checks for fraud. Fraudulent transactions are blocked.
+
+Sample Output
+
+Processing payments...
+Paid 150.00 using Credit Card ending with 3456
+Paid 0.015 BTC to wallet 1BitcoinWalletExample123
+Performing fraud check...
+Transaction blocked: Fraud detected on card ending with 3456
+
+✅ LSP Compliance Explanation
+
+CreditCardPayment and CryptoPayment both implement the PaymentProcessor interface.
+
+The processPayment function works with any valid payment processor without modification.
+
+The FraudDetectionService does not implement PaymentProcessor, adhering to LSP by not misusing the interface.
+
+Changes in fraud detection or new payment methods will not affect the existing code.
+
+By applying LSP, the system remains scalable, maintainable, and error-free.
+
+🔎 Conclusion
+
+This project effectively demonstrates how to apply the Liskov Substitution Principle in Go by designing robust and flexible software systems. Each component serves a clear purpose, and future expansions can be added without disrupting existing functionality.
+
+
 
 ---
 
